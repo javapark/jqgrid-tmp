@@ -14,7 +14,8 @@
 <body>
 <table id="list4"></table>
 <script>
-    jQuery("#list4").jqGrid({
+    var i, max, myData, grid = $("#list4");
+    grid.jqGrid({
         datatype: "local",
         height: 'auto',
         colNames:['Inv No','Date', 'Client', 'Amount','Tax','Total','Notes'],
@@ -30,7 +31,8 @@
         multiselect: true,
         caption: "Manipulating Array Data"
     });
-    var mydata = [
+
+    myData = [
         {id:"1",invdate:"2007-10-01",name:"test",note:"note",amount:"200.00",tax:"10.00",total:"210.00"},
         {id:"2",invdate:"2007-10-02",name:"test2",note:"note2",amount:"300.00",tax:"20.00",total:"320.00"},
         {id:"3",invdate:"2007-09-01",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"},
@@ -41,8 +43,10 @@
         {id:"8",invdate:"2007-10-03",name:"test2",note:"note2",amount:"300.00",tax:"20.00",total:"320.00"},
         {id:"9",invdate:"2007-09-01",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"}
     ];
-    for(var i=0;i<=mydata.length;i++)
-        jQuery("#list4").jqGrid('addRowData',i+1,mydata[i]);
+
+    for( i=0, max = myData.length ; i<=max ; i++ ){
+        grid.jqGrid('addRowData', i+1, myData[i]);
+    }
 </script>
 </body>
 </html>
